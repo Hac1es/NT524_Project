@@ -124,7 +124,7 @@ Password: admin123
 ## Part 2: Create Realm and Client for OpenStack Keystone
 
 ### 1. Create a New Realm
-1. Access Keycloak Admin Console at `http://your-server-ip:8080`
+1. Access Keycloak Admin Console at `http://your-server-ip:8088`
 2. Login with admin credentials (admin/admin123)
 3. In the top-left dropdown, click on the current realm name
 4. Click **"Create realm"**
@@ -484,7 +484,7 @@ source /etc/kolla/admin-openrc.sh
 
 # Create tungzeka/tung2005/nchinhtung@gmail.com
 openstack project create Akali
-openstack user create --project Akali --password tung2005 --email nchinhtung@gmail.com tungzeka
+openstack user create --project Akali --password tung2005 --email nchinhtung@gmail.com --domain nt524 tungzeka
 openstack role add --project Akali --user tungzeka admin
 ```
 
