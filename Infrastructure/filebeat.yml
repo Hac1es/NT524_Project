@@ -1,44 +1,46 @@
 filebeat.inputs:
-# 1. Keycloak
-- type: log
-  enabled: true
-  paths:
-    - /host_logs/keycloak/keycloak.log
-  fields:
-    service_type: keycloak
-  harvester_limit: 10
-  harvester_buffer_size: 262144
-  backoff: 1s
-  max_backoff: 10s
+  # 1. Keycloak
+  - type: log
+    enabled: true
+    paths:
+      - /host_logs/keycloak/keycloak.log
+    fields:
+      service_type: keycloak
+    harvester_limit: 10
+    harvester_buffer_size: 262144
+    backoff: 1s
+    max_backoff: 10s
 
-# 2. Keystone Python logs (có multiline)
-- type: log
-  enabled: true
-  paths:
-    - /host_logs/kolla/keystone/keystone.log
-  exclude_files: ['.gz$']
-  fields:
-    service_type: openstack
-  multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
-  multiline.negate: true
-  multiline.match: after
-  harvester_limit: 10
-  harvester_buffer_size: 262144
-  backoff: 1s
-  max_backoff: 10s
+  # 2. Keystone Python logs (có multiline)
+  - type: log
+    enabled: true
+    paths:
+      - /host_logs/kolla/keystone/keystone.log
+    exclude_files: [".gz$"]
+    fields:
+      service_type: openstack
+    multiline.pattern: '^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}'
+    multiline.negate: true
+    multiline.match: after
+    multiline.max_lines: 1000
+    multiline.timeout: 5s
+    harvester_limit: 10
+    harvester_buffer_size: 262144
+    backoff: 1s
+    max_backoff: 10s
 
-# 3. Keystone Apache Access logs (KHÔNG có multiline)
-- type: log
-  enabled: true
-  paths:
-    - /host_logs/kolla/keystone/keystone-apache-public-access.log
-  exclude_files: ['.gz$']
-  fields:
-    service_type: openstack
-  harvester_limit: 10
-  harvester_buffer_size: 262144
-  backoff: 1s
-  max_backoff: 10s
+  # 3. Keystone Apache Access logs (KHÔNG có multiline)
+  - type: log
+    enabled: true
+    paths:
+      - /host_logs/kolla/keystone/keystone-apache-public-access.log
+    exclude_files: [".gz$"]
+    fields:
+      service_type: openstack
+    harvester_limit: 10
+    harvester_buffer_size: 262144
+    backoff: 1s
+    max_backoff: 10s
 
 output.logstash:
   hosts: ["100.75.35.14:5044"]
@@ -50,4 +52,3 @@ output.logstash:
   backoff:
     init: 1s
     max: 30s
-
