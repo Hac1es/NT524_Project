@@ -43,7 +43,10 @@ filebeat.inputs:
     max_backoff: 10s
 
 output.logstash:
-  hosts: ["100.75.35.14:5044"]
+  hosts: ["100.100.86.118:5044"]
+  ssl.enabled: true
+  ssl.certificate_authorities: ["/usr/share/filebeat/certs/ca.crt"]
+  ssl.verification_mode: "certificate"
   bulk_max_size: 500
   compression_level: 5
   flush_interval: 5s
