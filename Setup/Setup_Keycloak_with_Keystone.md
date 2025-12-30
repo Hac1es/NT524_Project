@@ -1,58 +1,5 @@
 # Setup Keycloak with OpenStack Keystone
 
-## Authenication flow
-
-```markdown
-┌──────────────────────────┐
-│ Horizon │
-│ (User clicks Federated │
-│ Login via Keycloak) │
-└─────────────┬────────────┘
-│ 1. Start OIDC Login
-v
-┌──────────────────────────┐
-│ Keystone │
-│ (Sends OIDC Auth Req) │
-└─────────────┬────────────┘
-│ 2. Redirect to Keycloak
-v
-┌──────────────────────────┐
-│ Keycloak │
-│ (Shows login page) │
-└─────────────┬────────────┘
-│ 3. User enters credentials
-│ 4. Keycloak validates & issues ID Token (JWT)
-v
-┌──────────────────────────┐
-│ Browser │
-│ (Receives redirect*uri │
-│ with token fragment) │
-└─────────────┬────────────┘
-│ 5. JS posts token to Keystone (mod_auth_openidc)
-v
-┌──────────────────────────┐
-│ Keystone mod_auth* │
-│ openidc │
-│ (Validates JWT: signature│
-│ issuer, audience, exp) │
-└─────────────┬────────────┘
-│ 6. Mapping
-v
-┌──────────────────────────┐
-│ Keystone Federation │
-│ (keycloak_mapping.json) │
-│ Maps Keycloak user → │
-│ local user in nt524 │
-└─────────────┬────────────┘
-│ 7. Create Keystone session
-v
-┌──────────────────────────┐
-│ Horizon │
-│ (User logged in via │
-│ Keycloak) │
-└──────────────────────────┘
-```
-
 ## Part 1: Keycloak Server Setup
 
 ### 1. Update System and Install Java
