@@ -1,3 +1,4 @@
 Credentials/
-Setup/ELK/Filebeat/ca.key
-Setup/ELK/Logstash_conf/aws.env
+Docs/ELK/Filebeat/ca.key
+IR/Playbooks/.env
+Docs/ELK/Logstash_conf/aws.env
