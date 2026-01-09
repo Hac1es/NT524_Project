@@ -15,11 +15,12 @@
 - Create a Transform: Stack Management > Transforms
 
   - Source: Entire your Data View
-  - KQL: sp: `"Keycloak" AND idp: "Keycloak" AND event_type: "LOGIN"`
+  - KQL: `sp: "Keycloak" AND idp: "Keycloak" AND event_type: "LOGIN"`
   - Group by: `user_id`
   - Aggregations:
     - @timestamp: `max`
     - location: `top_metrics`
+  - Nhớ bật Continous Mode
 
 - Enrich Policy: Dev Tools
 

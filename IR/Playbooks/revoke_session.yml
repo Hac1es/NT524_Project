@@ -1,11 +1,11 @@
 ---
-- name: Incident Response - Impossible Travel Detected
+- name: Incident Response - Revoke Token
   hosts: localhost
   gather_facts: no
   vars:
     # Cấu hình Keycloak
     keycloak_url: "https://sso.hippi.work"
-    realm_name: "Cloud" # Realm chứa user (ví dụ: master hoặc customer)
+    realm_name: "cloud" # Realm chứa user (ví dụ: master hoặc customer)
     admin_user: "{{ lookup('env', 'KEYCLOAK_ADMIN_USER') }}" # User có quyền quản trị Keycloak
     admin_pass: "{{ lookup('env', 'KEYCLOAK_ADMIN_PASSWORD') }}"
 
@@ -28,31 +28,30 @@
     # BƯỚC 2: Tìm ID (UUID) của user dựa trên username
     # Keycloak API thao tác qua UUID chứ không phải username
     - name: 2. Find User ID
-      community.general.keycloak_user_info:
-        auth_keycloak_url: "{{ keycloak_url }}"
-        token: "{{ keycloak_auth.json.access_token }}"
-        realm: "{{ realm_name }}"
-        query_users:
-          - username: "{{ suspect_username }}"
+      uri:
+        url: "{{ keycloak_url }}/admin/realms/{{ realm_name }}/users?username={{ suspect_username }}&exact=true"
+        method: GET
+        headers:
+          Authorization: "Bearer {{ keycloak_auth.json.access_token }}"
         validate_certs: no
       register: user_info
 
     - name: Fail if user not found
       fail:
         msg: "Không tìm thấy user {{ suspect_username }}"
-      when: user_info.users | length == 0
+      when: user_info.json | length == 0
 
     # BƯỚC 3: Logout toàn bộ session của User đó (Revoke Consent)
-    - name: 3. Kick user out (Revoke Sessions)
+    - name: 3. Revoke Sessions
       uri:
-        url: "{{ keycloak_url }}/admin/realms/{{ realm_name }}/users/{{ user_info.users[0].id }}/logout"
+        url: "{{ keycloak_url }}/admin/realms/{{ realm_name }}/users/{{ user_info.json[0].id }}/logout"
         method: POST
         headers:
           Authorization: "Bearer {{ keycloak_auth.json.access_token }}"
         status_code: 204
         validate_certs: no
 
-    # BƯỚC 4: Gửi thông báo (Ví dụ in ra debug hoặc gửi Slack/Discord)
+    # BƯỚC 4: Gửi thông báo
     - name: Notification
       debug:
-        msg: "Đã thu hồi token của {{ suspect_username }} (UUID: {{ user_info.users[0].id }}) do phát hiện di chuyển bất thường."
+        msg: "Đã thu hồi token của {{ suspect_username }} (UUID: {{ user_info.json[0].id }})"
