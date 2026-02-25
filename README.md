@@ -2,6 +2,8 @@
 
 A secure Federation and Single Sign-On solution for hybrid and multi-cloud environments.
 
+**Tech Stack**: Keycloak, OpenStack Keystone (with Kolla-Ansible AIO OpenStack), AWS IAM Identity Center, ELK Stack + Filebeat, Docker, Ansible
+
 ### Issues
 
 Fragmented identity management across **public** and **private** cloud leads to credential sprawl, misconfigurations, and fragmented auditing (**The MxN problem**)
