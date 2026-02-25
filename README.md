@@ -38,7 +38,7 @@ Although simplified, the architecture preserves the security model via centraliz
 
 ### Future Impovements
 
-- Vault-based secret management & key rotation
-- Ingress layer for unified access & routing with Traefik & ModSecurity
-- OPA-driven centralized policy enforcement for JiT access provisioning and ABAC
-- GitOps workflow as single source of truth
+- Vault-based **secret management & key rotation**
+- **Ingress layer** with Traefik & ModSecurity
+- OPA-driven centralized policy enforcement for **JiT access provisioning and ABAC**
+- GitOps workflow as **single source of truth**
