@@ -42,7 +42,7 @@ Although simplified, the architecture preserves the security model via centraliz
 - Impossible Travel Alert: [Geo-anomalous logins trigger Kibana alerts and semi-automatic session revocation with Ansible.](https://drive.google.com/file/d/1pWakjtDTkG07PD50c7MPgToRzA8kF0x/view?usp=drive_link) 
 - Replay Attack: [Replayed authentication requests are blocked and logged as LOGIN_ERROR.](https://drive.google.com/file/d/1vVZVkNL7cYqv7rAnJDKhQS3Po2zYEWhs/view?usp=sharing)
 
-### Future Impovements
+### Future Improvements
 
 - Vault-based **secret management & key rotation**
 - **Ingress layer** with Traefik & ModSecurity
