@@ -12,7 +12,7 @@ Fragmented identity management across **public** and **private** cloud leads to 
 - Centralized identity across private & public cloud
 - Hardened authentication & session security
 - Unified logging & monitoring
-- Anom﻿aly detection & threat visibility
+- Anom﻿aly detection, threat visibility & semi-automated response
 
 ### Solution Architecture
 
@@ -34,4 +34,11 @@ Although simplified, the architecture preserves the security model via centraliz
 - MFA Enforcement: [Keycloak enforces OTP-based MFA with mandatory authenticator verification.](https://drive.google.com/file/d/1DsomiBwTJjKQyOZsDoJzArPhzlRQzdve/view?usp=drive_link)
 - Unsigned Token: [Tampered or unsigned OIDC tokens are rejected, preventing unauthorized access.](https://drive.google.com/file/d/1xPBricIsjhagQGyEuVz8kw95FnPO1OG/view?usp=sharing)
 - Impossible Travel Alert: [Geo-anomalous logins trigger Kibana alerts and semi-automatic session revocation with Ansible.](https://drive.google.com/file/d/1pWakjtDTkG07PD50c7MPgToRzA8kF0x/view?usp=drive_link) 
-- Replay Attack: [Replayed authentication requests are blocked and logged as LOGIN_ERROR.](https://drive.google.com/file/d/1vVZVkNL7cYqv7rAnJDKhQS3Po2zYEWhs/view?usp=sharing) 
+- Replay Attack: [Replayed authentication requests are blocked and logged as LOGIN_ERROR.](https://drive.google.com/file/d/1vVZVkNL7cYqv7rAnJDKhQS3Po2zYEWhs/view?usp=sharing)
+
+### Future Impovements
+
+- Vault-based secret management & key rotation
+- Ingress layer for unified access & routing with Traefik & ModSecurity
+- OPA-driven centralized policy enforcement for JiT access provisioning and ABAC
+- GitOps workflow as single source of truth
