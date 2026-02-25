@@ -16,7 +16,7 @@ Fragmented identity management across **public** and **private** cloud leads to 
 
 ### Solution Architecture
 
-![Architecture](SolutionArchitecture.png)
+<img src="SolutionArchitecture.png" width="77%">
 
 A centralized identity fabric enables secure SSO across hybrid cloud. Global STS authenticates users, exchanges tokens, and enforces policy decisions, while platform IAM services map access rights. All activities are centrally monitored for security visibility.
 
