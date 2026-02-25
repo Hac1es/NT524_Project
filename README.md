@@ -16,13 +16,13 @@ Fragmented identity management across **public** and **private** cloud leads to 
 
 ### Solution Architecture
 
-<img src="SolutionArchitecture.png" width="77%">
+<img src="SolutionArchitecture.png" width="90%">
 
 A centralized identity fabric enables secure SSO across hybrid cloud. Global STS authenticates users, exchanges tokens, and enforces policy decisions, while platform IAM services map access rights. All activities are centrally monitored for security visibility.
 
 ### Implement Architecture
 
-<img src="Architecture/Trien_khai_thuc_te.png" width="35%">
+<img src="Architecture/Trien_khai_thuc_te.png" width="50%">
 
 Due to time constraints, the system was implemented in a simplified form: Keycloak serves as Global STS, PDP, and token exchange service. Users authenticate once to obtain a Home Token for AWS and OpenStack access. Logs are centralized in ELK, with incident response automated via Ansible.
 
