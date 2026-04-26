@@ -4,9 +4,9 @@ A secure Federation and Single Sign-On solution for hybrid and multi-cloud envir
 
 **Tech Stack**: Keycloak, OpenStack Keystone (with Kolla-Ansible AIO OpenStack), AWS IAM Identity Center, ELK Stack + Filebeat, Docker, Ansible
 
-**Setup & Logstash config**: [Docs](Docs/)
+**Setup, Logstash & Filebeat config**: [Setup](Setup/)
 
-**ELK rule & Response playbook**: [Incident Response](IR/)
+**ELK rule & Response playbook**: [Incident Response](Incident_Response/)
 
 ### Issues
 
@@ -39,7 +39,7 @@ Although simplified, the architecture preserves the security model via centraliz
 - Functionality Test: [SSO login via Keycloak to Horizon and seamless access to AWS Console; all auth logs centralized in ELK.](https://drive.google.com/file/d/1TjOLxGEJ8fo7UI2phOakoOcEAKyJW2Jy/view?usp=drive_link)
 - MFA Enforcement: [Keycloak enforces OTP-based MFA with mandatory authenticator verification.](https://drive.google.com/file/d/1DsomiBwTJjKQyOZsDoJzArPhzlRQzdve/view?usp=drive_link)
 - Unsigned Token: [Tampered or unsigned OIDC tokens are rejected, preventing unauthorized access.](https://drive.google.com/file/d/1xPBricIsjhagQGyEuVz8kw95FnPO1OG/view?usp=sharing)
-- Impossible Travel Alert: [Geo-anomalous logins trigger Kibana alerts and semi-automatic session revocation with Ansible.](https://drive.google.com/file/d/1pWakjtDTkG07PD50c7MPgToRzA8kF0x/view?usp=drive_link) 
+- Impossible Travel Alert: [Geo-anomalous logins trigger Kibana alerts and semi-automatic session revocation with Ansible.](https://drive.google.com/file/d/1pWakjtDTkG07PD50c7MPgToRzA8kF0x/view?usp=drive_link)
 - Replay Attack: [Replayed authentication requests are blocked and logged as LOGIN_ERROR.](https://drive.google.com/file/d/1vVZVkNL7cYqv7rAnJDKhQS3Po2zYEWhs/view?usp=sharing)
 
 ### Future Improvements
