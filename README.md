@@ -1,5 +1,7 @@
 ## Secure Federation & SSO for Multi/Hybrid Cloud
 
+![Kibana](./Kibana_dashboard.png)
+
 A secure Federation and Single Sign-On solution for hybrid and multi-cloud environments.
 
 **Tech Stack**: Keycloak, OpenStack Keystone (with Kolla-Ansible AIO OpenStack), AWS IAM Identity Center, ELK Stack + Filebeat, Docker, Ansible
