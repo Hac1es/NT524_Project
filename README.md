@@ -1,5 +1,13 @@
 ## Secure Federation & SSO for Multi/Hybrid Cloud
 
+### Scenarios & Demo
+
+- Functionality Test: [SSO login via Keycloak to Horizon and seamless access to AWS Console; all auth logs centralized in ELK.](https://drive.google.com/file/d/1TjOLxGEJ8fo7UI2phOakoOcEAKyJW2Jy/view?usp=drive_link)
+- MFA Enforcement: [Keycloak enforces OTP-based MFA with mandatory authenticator verification.](https://drive.google.com/file/d/1DsomiBwTJjKQyOZsDoJzArPhzlRQzdve/view?usp=drive_link)
+- Unsigned Token: [Tampered or unsigned OIDC tokens are rejected, preventing unauthorized access.](https://drive.google.com/file/d/1xPBricIsjhagQGyEuVz8kw95FnPO1OG/view?usp=sharing)
+- Impossible Travel Alert: [Geo-anomalous logins trigger Kibana alerts and semi-automatic session revocation with Ansible.](https://drive.google.com/file/d/1pWakjtDTkG07PD50c7MPgToRzA8kF0x/view?usp=drive_link)
+- Replay Attack: [Replayed authentication requests are blocked and logged as LOGIN_ERROR.](https://drive.google.com/file/d/1vVZVkNL7cYqv7rAnJDKhQS3Po2zYEWhs/view?usp=sharing)
+
 ![Kibana](./Kibana_dashboard.png)
 
 A secure Federation and Single Sign-On solution for hybrid and multi-cloud environments.
@@ -35,14 +43,6 @@ A centralized identity fabric enables secure SSO across hybrid cloud. Global STS
 Due to time constraints, the system was implemented in a simplified form: Keycloak serves as Global STS, PDP, and token exchange service. Users authenticate once to obtain a Home Token for AWS and OpenStack access. Logs are centralized in ELK, with incident response automated via Ansible.
 
 Although simplified, the architecture preserves the security model via centralized identity, token federation, and semi-automated monitoring & response.
-
-### Scenarios
-
-- Functionality Test: [SSO login via Keycloak to Horizon and seamless access to AWS Console; all auth logs centralized in ELK.](https://drive.google.com/file/d/1TjOLxGEJ8fo7UI2phOakoOcEAKyJW2Jy/view?usp=drive_link)
-- MFA Enforcement: [Keycloak enforces OTP-based MFA with mandatory authenticator verification.](https://drive.google.com/file/d/1DsomiBwTJjKQyOZsDoJzArPhzlRQzdve/view?usp=drive_link)
-- Unsigned Token: [Tampered or unsigned OIDC tokens are rejected, preventing unauthorized access.](https://drive.google.com/file/d/1xPBricIsjhagQGyEuVz8kw95FnPO1OG/view?usp=sharing)
-- Impossible Travel Alert: [Geo-anomalous logins trigger Kibana alerts and semi-automatic session revocation with Ansible.](https://drive.google.com/file/d/1pWakjtDTkG07PD50c7MPgToRzA8kF0x/view?usp=drive_link)
-- Replay Attack: [Replayed authentication requests are blocked and logged as LOGIN_ERROR.](https://drive.google.com/file/d/1vVZVkNL7cYqv7rAnJDKhQS3Po2zYEWhs/view?usp=sharing)
 
 ### Future Improvements
 
