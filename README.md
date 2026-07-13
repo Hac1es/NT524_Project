@@ -50,3 +50,4 @@ Although simplified, the architecture preserves the security model via centraliz
 - **Ingress layer** with Traefik & ModSecurity
 - OPA-driven centralized policy enforcement for **JiT access provisioning and ABAC**
 - GitOps workflow as **single source of truth**
+- SCIM 2.0-based lifecycle provisioning & automated deprovisioning
